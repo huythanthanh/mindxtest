@@ -8,23 +8,41 @@
 </head>
 
 <body>
-    <h1> Pick a random number from 1 to 10</h1>
-    <input type="number" id="id1">
-    <button type="button" onclick=" game()">
-        Click me</button>
+    <button id="button1">press the button to see the code</button>
+    <p id="demo"></p>
+
+    <input id="demo1" type="text" name="code" required /><br /><br />
+
+    <button id="button2" type="button" onclick="onClick()">Compare</button>
+    <p></p>
 
     <script>
-        var computer = Math.round(Math.random() * 10);
-        console.log(computer);
-        var user = document.getElementById('id1').value;
-        function game() {
-            if (user == computer) {
-                alert("yay! Good Work");
+        var num;
+        function myFunction() {
+            num = document.getElementById("demo").innerHTML = Math.floor((Math.random() * 10) + 1);
+        }
+
+        document.getElementById("button1").addEventListener('click', myFunction)
+        document.getElementById("button2").addEventListener('click', myFunction1)
+
+        function myFunction1() {
+            var secondInput = document.getElementById("demo1").value;
+            if (num === +secondInput) {
+                window.alert("Same");
             }
             else {
-                alert("Sorry Not Matched, The Number is " + computer);
+                window.alert("Not same");
             }
         }
+
+        var clicks = 0;
+        function onClick() {
+            clicks += 1;
+            document.getElementById("clicks").innerHTML = clicks;
+            if (clicks == 3) {
+                window.alert("The number is " + num);
+            }
+        };
     </script>
 </body>
 
